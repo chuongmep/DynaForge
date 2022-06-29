@@ -14,10 +14,10 @@ namespace BIM360
         private Projects() { }
 
         [MultiReturn(new[] { "name", "id" })]
-        public static Dictionary<string, List<string>> Get(string Token, string client_Id)
+        public static Dictionary<string, List<string>> Get(string Token, string HubId)
         {
 
-            var client = new RestClient("https://developer.api.autodesk.com/hq/v1/accounts/" + client_Id + "/projects");
+            var client = new RestClient("https://developer.api.autodesk.com/hq/v1/accounts/" + HubId + "/projects");
             client.Timeout = -1;
             var request = new RestRequest(Method.GET);
             request.AddHeader("Authorization", Token);

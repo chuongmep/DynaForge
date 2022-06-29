@@ -32,6 +32,7 @@ namespace DataManagement
                 List<string> projectNames = new List<string>();
                 List<string> projectIds = new List<string>();
 
+                if (deserializedProduct.data == null) return new Dictionary<string, List<string>>();
                 foreach (DatumTopFolder i in deserializedProduct.data)
                 {
                     projectNames.Add(i.attributes.name);

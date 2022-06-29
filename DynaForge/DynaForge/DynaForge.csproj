@@ -59,7 +59,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
   </ItemGroup>
-  <Target Name="CopyFiles" AfterTargets="CoreBuild"  Condition="$(Configuration.Contains('Debug'))">
+  <Target Name="CopyFiles" AfterTargets="CoreBuild" Condition="$(Configuration.Contains('Debug'))">
     <ItemGroup>
       <Dlls Include="$(OutDir)*.dll" />
       <Pdbs Include="$(OutDir)*.pdb" />

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Autodesk.DesignScript.Runtime;
 using Newtonsoft.Json;
 using RestSharp;
@@ -13,8 +9,13 @@ namespace DataManagement
     {
         private Projects() { }
 
+        /// <summary>
+        ///  Return Project Information Include name and ProjectId
+        /// </summary>
+        /// <param name="Token">token auth</param>
+        /// <param name="hubId">Hub Id Get from Hub</param>
         /// <returns></returns>
-        [MultiReturn(new[] { "name", "id" })]
+        [MultiReturn(new[] { "ProjectName", "ProjectId" })]
         public static Dictionary<string, List<string>> Get(string Token, string hubId)
         {
             var client = new RestClient("https://developer.api.autodesk.com/project/v1/hubs/" + hubId + "/projects");
@@ -39,16 +40,14 @@ namespace DataManagement
                 }
 
                 return new Dictionary<string, List<string>> {
-                { "name", projectNames },
-                { "id", projectIds }
+                { "ProjectName", projectNames },
+                { "ProjectId", projectIds }
                 };
             }
-            else
-            {
-                return null;
-            }
+            return null;
 
         }
+
     }
 
     class RootobjectProjects
