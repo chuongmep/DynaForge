@@ -36,7 +36,7 @@ namespace Authentication
             request.AddParameter("client_secret", FORGE_CLIENT_SECRET);
             request.AddParameter("scope", scope);
             {
-                IRestResponse response = client.Execute(request);
+                IRestResponse response = client.Execute(request); 
                 Token deserializedProduct = JsonConvert.DeserializeObject<Token>(response.Content);
                 token = "Bearer " + deserializedProduct.access_token;
             }
