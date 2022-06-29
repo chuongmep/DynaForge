@@ -15,6 +15,13 @@ namespace DataManagement
         private FileUpload() { }
 
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="Token"></param>
+        /// <param name="bucket"></param>
+        /// <param name="fileURN"></param>
+        /// <param name="filePath"></param>
         /// <returns></returns>
         [MultiReturn(new[] { "BucketKey", "ObjectId", "objectKey", "Location" })]
         public static Dictionary<string, string> Run(string Token, string bucket, string fileURN, string filePath)
