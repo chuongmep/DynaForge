@@ -59,22 +59,21 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="RestSharp" Version="106.12.0" />
   </ItemGroup>
-  <Target Name="AfterBuild">
+  <Target Name="CopyFiles" AfterTargets="CoreBuild">
     <ItemGroup>
       <Dlls Include="$(OutDir)*.dll" />
       <Pdbs Include="$(OutDir)*.pdb" />
       <Xmls Include="$(OutDir)*.xml" />
       <Configs Include="$(OutDir)*.config" />
     </ItemGroup>
-    <MakeDir Directories="$(SolutionDir)..\packages\DynaForge\dyf" />
-    <MakeDir Directories="$(SolutionDir)..\packages\DynaForge\extra" />
-    <Copy SourceFiles="@(Dlls)" DestinationFolder="$(SolutionDir)..\packages\DynaForge\bin\" />
-    <Copy SourceFiles="@(Pdbs)" DestinationFolder="$(SolutionDir)..\packages\DynaForge\bin\" />
-    <Copy SourceFiles="@(Xmls)" DestinationFolder="$(SolutionDir)..\packages\DynaForge\bin\" />
-    <Copy SourceFiles="@(Configs)" DestinationFolder="$(SolutionDir)..\packages\DynaForge\bin\" />
-    <Copy SourceFiles="$(SolutionDir)DynaForge\pkg.json" DestinationFolder="$(SolutionDir)..\packages\DynaForge\" />
-    <ItemGroup>
-      <PackageItem Include="$(SolutionDir)..\packages\*.*" />
-    </ItemGroup>
+    <MakeDir Directories="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\dyf" />
+    <MakeDir Directories="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\extra" />
+    <MakeDir Directories="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\bin" />
+    <Copy SourceFiles="$(SolutionDir)DynaForge\pkg.json" DestinationFolder="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge" />
+    <Copy SourceFiles="@(Dlls)" DestinationFolder="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\bin\" />
+    <Copy SourceFiles="@(Pdbs)" DestinationFolder="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\bin\" />
+    <Copy SourceFiles="@(Xmls)" DestinationFolder="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\bin\" />
+    <Copy SourceFiles="@(Configs)" DestinationFolder="$(Appdata)\Dynamo\Dynamo Core\2.16\packages\DynaForge\bin\" />
+    
   </Target>
 </Project>
